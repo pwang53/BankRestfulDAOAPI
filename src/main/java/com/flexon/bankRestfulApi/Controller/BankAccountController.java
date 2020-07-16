@@ -35,7 +35,7 @@ public class BankAccountController {
         return new ResponseEntity<>("Created new account", HttpStatus.CREATED);
     }
 
-    @DeleteMapping(path="deleteBankAccount/{id}")
+    @DeleteMapping(path="/deleteBankAccount/{id}")
     public ResponseEntity deleteBankAccount(@PathVariable String id) {
         if (accountDAO.deleteAccount(id))
             return new ResponseEntity<>("Successfully Deleted the Account", HttpStatus.OK);
@@ -43,7 +43,7 @@ public class BankAccountController {
         return new ResponseEntity<>("No this id, please retry", HttpStatus.BAD_REQUEST);
     }
 
-    @PostMapping(path="updateBankAccount/{option}")
+    @PutMapping(path="/updateBankAccount/{option}")
     public ResponseEntity updateBankAccount(@PathVariable String option, @RequestBody BankAccount account) {
         if (accountDAO.updateAccount(option, account))
             return new ResponseEntity<>("Update Successfully", HttpStatus.OK);

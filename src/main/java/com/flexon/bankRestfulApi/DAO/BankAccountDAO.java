@@ -104,7 +104,7 @@ public class BankAccountDAO {
     }
 
     public boolean updateAccount(String option, BankAccount account) {
-        if (!option.equals("balance") && !option.equals("customerID"))
+        if (!option.toLowerCase().equals("balance") && !option.toLowerCase().equals("customerid"))
             return false;
 
         String query;
@@ -115,7 +115,7 @@ public class BankAccountDAO {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URI, USERNAME, PASSWORD);
-            if (option.equals("balance")) {
+            if (option.toLowerCase().equals("balance")) {
                 if (account.getBalance() == null)
                     return false;
                 query = "UPDATE accounts SET account_balance=? WHERE account_ID=?";
@@ -123,7 +123,7 @@ public class BankAccountDAO {
                 ps.setBigDecimal(1, account.getBalance());
             }
 
-            if (option.equals("customerID")){
+            if (option.toLowerCase().equals("customerid")){
                 if (account.getCustomerID() == null)
                     return false;
                 query = "UPDATE accounts SET customer_ID=? WHERE account_ID=?";

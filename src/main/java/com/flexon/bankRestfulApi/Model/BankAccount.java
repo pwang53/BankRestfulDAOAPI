@@ -1,8 +1,5 @@
 package com.flexon.bankRestfulApi.Model;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 public class BankAccount {
